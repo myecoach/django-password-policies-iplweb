@@ -14,6 +14,9 @@ from password_policies.forms.validators import validate_not_email
 class PasswordPoliciesField(forms.CharField):
     """
 A form field that validates a password using :ref:`api-validators`.
+
+More info here
+https://docs.djangoproject.com/en/2.1/ref/forms/validation/#using-validators
 """
     default_validators = [validate_common_sequences,
                           validate_consecutive_count,

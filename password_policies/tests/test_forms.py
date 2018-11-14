@@ -17,7 +17,7 @@ class PasswordPoliciesFieldTest(BaseTest):
         self.assertFieldOutput(PasswordPoliciesField,
                                {'Chad+pher9k': 'Chad+pher9k'},
                                {'EUAdEHI3ES': [
-                                   u'The new password must contain 1 or more symbol.']}
+                                   u'The new password must contain 1 or more symbols.']}
                                )
 
     def test_password_field_2(self):
@@ -29,7 +29,7 @@ class PasswordPoliciesFieldTest(BaseTest):
     def test_password_field_3(self):
         self.assertFieldOutput(PasswordPoliciesField,
                                {'Chad+pher9k': 'Chad+pher9k'},
-                               {u'Chad+pherg': [u'The new password must contain 1 or more number.']}
+                               {u'Chad+pherg': [u'The new password must contain 1 or more numbers.']}
                                )
 
     def test_password_field_4(self):
@@ -50,7 +50,7 @@ class PasswordPoliciesFieldTest(BaseTest):
         self.assertFieldOutput(PasswordPoliciesField,
                                {u'Ch\xc4d+pher9k': u'Ch\xc4d+pher9k'},
                                {u'\xc1\xc2\xc3\xc4\u0662\xc5\xc6': [
-                                   u'The new password must contain 1 or more symbol.']}
+                                   u'The new password must contain 1 or more symbols.']}
                                )
 
     def test_password_field_7(self):
@@ -65,8 +65,8 @@ class PasswordPoliciesFieldTest(BaseTest):
                                {u'Ch\xc4d+pher9k': u'Ch\xc4d+pher9k'},
                                {u'a': [u'The new password is based on a common sequence of characters.',
                                        u'The new password must contain 3 or more letters.',
-                                       u'The new password must contain 1 or more number.',
-                                       u'The new password must contain 1 or more symbol.',
+                                       u'The new password must contain 1 or more numbers.',
+                                       u'The new password must contain 1 or more symbols.',
                                        u'The new password is not varied enough.']}
                                )
 
