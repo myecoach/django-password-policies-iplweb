@@ -16,6 +16,7 @@ from django.views.generic.base import View
 from django.views.generic.edit import FormView
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
+from django.core.exceptions import PermissionDenied
 
 from password_policies.conf import settings
 from password_policies.forms import PasswordPoliciesForm
@@ -35,8 +36,7 @@ A view mixin which verifies that the user has not authenticated.
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated():
-            template_name = settings.TEMPLATE_403_PAGE
-            return permission_denied(request, template_name=template_name)
+            raise PermissionDenied
         return super(LoggedOutMixin, self).dispatch(request, *args, **kwargs)
 
 
