@@ -23,19 +23,23 @@ from password_policies.forms import PasswordPoliciesForm
 from password_policies.forms import PasswordPoliciesChangeForm
 from password_policies.forms import PasswordResetForm
 
-from utils import DateSerializer
+from .utils import DateSerializer
 
 
 class LoggedOutMixin(View):
     """
-A view mixin which verifies that the user has not authenticated.
-
-.. note::
-    This should be the left-most mixin of a view.
-"""
+    A view mixin which verifies that the user has not authenticated.
+    .. note::
+        This should be the left-most mixin of a view.
+    """
 
     def dispatch(self, request, *args, **kwargs):
-        if request.user.is_authenticated():
+        try:
+            auth = request.user.is_authenticated()
+        except TypeError:
+            auth = request.user.is_authenticated
+
+        if auth:
             raise PermissionDenied
         return super(LoggedOutMixin, self).dispatch(request, *args, **kwargs)
 
